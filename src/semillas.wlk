@@ -2,7 +2,7 @@ import parcelas.*
 
 class Plantas{
 	var anioDeObtencion=0
-	var property altura
+	var property altura =0
 	var horasDeSolQueAguanta=0
 	 
 	

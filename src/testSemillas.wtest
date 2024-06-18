@@ -1,6 +1,32 @@
+import semillas.*
+import parcelas.*
 
-test "testX" {
+describe "test de semillas"{
+	const menta1 = new Menta(altura=1)
+	const menta2 = new Menta(altura=0.3)
+	const soja1 = new Soja(anioDeObtencion=2009,altura=0.6)
+	const quinoa1 =new Quinoa(anioDeObtencion=2010, horasDeSolQueAguanta=12)
+	const quinoa2 =new Quinoa(anioDeObtencion=2001, horasDeSolQueAguanta=9)
+	
 
-	assert.that(true)
+test "Una menta de 1 mt debe dar semillas y ocupar 3 mts2"{
+	assert.that(menta1.daNuevasSemillas())
+	assert.equals(3, menta1.cuantoEspacioOcupa())
+}
+test "una menta de 0.3 mts no debe dar semillas y ocupa 0.9mts2"{
+	assert.notThat(menta2.daNuevasSemillas())
+	assert.equals(0.9, menta2.cuantoEspacioOcupa())
+}
+test "una soja de 0.6 mts de semillas del 2009, tolera 7 hs de sol,
+no da semillas y ocupa 0.3 mts2"{
+	assert.equals(7, soja1.horasDeSolQueAguanta())
+	assert.notThat(soja1.daNuevasSemillas())
+	assert.equals(0.3,soja1.cuantoEspacioOcupa())
+}
+test "una quinoa que tolera 12 hs de sol con semilla de 2010, da semillas
+nuevas. una que tolera 9 con semilla del 2001, también"{
+	assert.that(quinoa1.daNuevasSemillas())
+	assert.that(quinoa2.daNuevasSemillas())
+}
 
 }

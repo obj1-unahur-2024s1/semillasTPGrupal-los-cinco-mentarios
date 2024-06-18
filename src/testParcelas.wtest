@@ -1,0 +1,24 @@
+import semillas.*
+import parcelas.*
+
+describe "test de parcelas"{
+	const parcela1 = new ParcelaEcologica(ancho=20, largo=1, horasDeSolAlDia=8)
+	const soja1 = new Soja(altura=1.2,horasDeSolQueAguanta=9)
+
+test "parcela de 20 mts ancho*1 mt largo que recibe 8 hs de sol, tiene una sup de 20 mts2 y
+la cant maxima de plantas que tolera es 4"{
+	assert.equals(20, parcela1.superficie())
+	assert.equals(4, parcela1.cantidadMaxPlantasQueTolera())
+}
+test "plantar en una parcela de 20 mts de ancho * 1 mt de largo que recibe 8 hs de sol, 4 plantas
+de soja de mas de 1 mt, no tiene complicaciones. Si intentamos agregar una quinta planta, se 
+supera la cant maxima y lanza error"{
+	parcela1.plantarPlanta(soja1)
+	parcela1.plantarPlanta(soja1)
+	parcela1.plantarPlanta(soja1)
+	parcela1.plantarPlanta(soja1)
+	assert.notThat(parcela1.tieneComplicaciones())
+	parcela1.plantarPlanta(soja1)//lanza error
+}
+	
+}
